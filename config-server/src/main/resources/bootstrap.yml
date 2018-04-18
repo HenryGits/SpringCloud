@@ -12,7 +12,7 @@ spring:
         # git仓库 github地址
         git:
           # 记得在先gitlab上创建一个对应的project
-          uri: ${configserver_git_uri:https://github.com/HenryGits/config-server/}
+          uri: ${configserver_git_uri:https://github.com/HenryGits/SpringCloud/}
           search-paths: ${configserver_search_path:configRepo}
           username: ${configserver_git_username:809683500@qq.com}
           password: ${configserver_git_password:zhu809683500}
