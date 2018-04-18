@@ -1,0 +1,7 @@
+info:
+  name: 正在播放模块
+  contact: Top音乐计划
+
+server:
+  port: 9005
+

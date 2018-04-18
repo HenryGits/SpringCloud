@@ -1,0 +1,66 @@
+#spring服务启动时，加载的参数 java -Dxx=xx
+spring:
+  profiles:
+    active: dev
+  application:
+    name: recommend-service
+
+#测试环境
+---
+spring:
+  profiles: dev
+
+#注册中心信息
+eureka:
+  client:
+    #是否向服务注册中心注册自己
+    registerWithEureka: true
+    #是否检索服务
+    fetchRegistry: true
+    # 服务列表缓存更新时间
+    registryFetchIntervalSeconds: 10
+    # eureka server地址
+    serviceUrl:
+      defaultZone: ${eureka_serviceUrl:http://master:8761/eureka/}
+  instance:
+    # 心跳间隔
+    leaseRenewalIntervalInSeconds: 10
+    hostname: ${HOSTNAME:localhost}
+
+#生产环境
+---
+spring:
+  profiles: prod
+  cloud:
+    client:
+      hostname: ${HOSTNAME:localhost}
+    config:
+      discovery:
+        # 使用eureka发现配置中心服务
+        enabled: true
+        # 配置中心服务名称
+        serviceId: recommend-service
+      # 登录用户名和密码
+      username: ${config_server_security_name:root}
+      password: ${configserver_security_password:root}
+      # 覆盖本地配置
+      overrideNone: false
+      #导致配置模块记录一个警告而不是抛出异常,允许应用程序继续正常启动
+      failFast: true
+
+#注册中心信息
+eureka:
+  client:
+    #是否向服务注册中心注册自己
+    registerWithEureka: true
+    #是否检索服务
+    fetchRegistry: true
+    # 服务列表缓存更新时间
+    registryFetchIntervalSeconds: 10
+    # eureka server地址
+    serviceUrl:
+      defaultZone: ${eureka_serviceUrl:http://master:8761/eureka/}
+  instance:
+    # 心跳间隔
+    leaseRenewalIntervalInSeconds: 10
+    hostname: ${HOSTNAME:localhost}
