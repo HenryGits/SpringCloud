@@ -1,0 +1,19 @@
+info:
+  name: 调用记录监控
+  contact: Top音乐计划
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka_serviceUrl:http://master:8761/eureka/}
+server:
+  port: 9000
+spring:
+  application:
+    name: zipkin-server
+  zipkin:
+    locator:
+      discovery:
+        enabled: true
+    sender:
+      type: web
