@@ -1,0 +1,6 @@
+info:
+  name: 用户中心
+  contact: Top音乐计划
+
+server:
+  port: 9014
