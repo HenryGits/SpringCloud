@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Dalston.SR1</version>
+		<version>Dalston.SR4</version>
 		<relativePath />
 	</parent>
 	<groupId>com.dongnaoedu.springcloud</groupId>
@@ -16,12 +16,16 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Dalston.SR1</version>
+				<version>Dalston.SR4</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<properties>
+		<docker.url>registry.cn-hangzhou.aliyuncs.com/zhchub</docker.url>
+	</properties>
 
 	<dependencies>
 		<!-- spring-boot-starter-web web项目，集成容器tomcat -->
@@ -58,9 +62,26 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.13</version>
+
+				<!-- 打包时，build  docker -->
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+
 				<configuration>
-					<imageName>${env.DOCKER_REGISTRY_URL}/${project.artifactId}:${project.version}</imageName>
+					<imageName>${docker.url}/${project.artifactId}:${project.version}</imageName>
 					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+					<!-- 以下两行是为了docker push到DockerHub使用的。 -->
+					<serverId>ali-docker-hub</serverId>
+					<registryUrl>registry.cn-hangzhou.aliyuncs.com</registryUrl>
+					<!--install阶段也上传，否则只有deploy阶段上传-->
+					<pushImage>true</pushImage>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -68,15 +89,8 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
-					<!-- 以下两行是为了docker push到DockerHub使用的。 -->
-					<serverId>docker-aliyun-hub</serverId>
-					<registryUrl>${env.DOCKER_REGISTRY_URL}</registryUrl>
 				</configuration>
 			</plugin>
 		</plugins>
-
-
 	</build>
-
-
 </project>

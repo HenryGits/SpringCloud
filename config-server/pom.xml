@@ -26,6 +26,7 @@
 	<properties>
 		<docker.url>registry.cn-hangzhou.aliyuncs.com/zhchub</docker.url>
 	</properties>
+
 	<dependencies>
 		<!-- spring-boot-starter-web web项目，集成容器tomcat -->
 		<dependency>
