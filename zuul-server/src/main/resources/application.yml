@@ -1,0 +1,6 @@
+info:
+  name: 系统网关服务
+  contact: Top音乐计划
+
+server:
+  port: 8765
