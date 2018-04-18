@@ -6,7 +6,7 @@ services:
   # 1、订单服务
   order-service:
     # 镜像地址
-    image: master:5000/order-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/order-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: order-service
     # 端口不对外开放
@@ -51,7 +51,7 @@ services:
   # 2、仓储服务
   wms-service:
     # 镜像地址
-    image: master:5000/wms-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/wms-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: wms-service
     # 端口不对外开放
@@ -96,7 +96,7 @@ services:
   # 3、短信服务
   sms-service:
     # 镜像地址
-    image: master:5000/sms-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/sms-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: sms-service
     # 端口不对外开放
@@ -141,7 +141,7 @@ services:
   # 4、邮件服务
   mail-service:
     # 镜像地址
-    image: master:5000/mail-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/mail-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: mail-service
     # 端口不对外开放
@@ -186,7 +186,7 @@ services:
   # 5、推荐模块
   recommend-service:
     # 镜像地址
-    image: master:5000/recommend-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/recommend-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: recommend-service
     # 端口不对外开放
@@ -231,7 +231,7 @@ services:
   # 6、正在播放模块
   play-service:
     # 镜像地址
-    image: master:5000/play-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/play-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: play-service
     # 端口不对外开放
@@ -276,7 +276,7 @@ services:
   # 7、排行榜模块
   toplist-service:
     # 镜像地址
-    image: master:5000/toplist-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/toplist-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: toplist-service
     # 端口不对外开放
@@ -318,10 +318,10 @@ services:
       timeout: 10s
       # 重试次数
       retries: 5
-  # 8、歌手榜模块
+  # 8、歌手模块
   singer-service:
     # 镜像地址
-    image: master:5000/singer-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/singer-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: singer-service
     # 端口不对外开放
@@ -363,10 +363,11 @@ services:
       timeout: 10s
       # 重试次数
       retries: 5
+
   # 9、分类歌单模块
   assortsong-service:
     # 镜像地址
-    image: master:5000/assortsong-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/assortsong-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: assortsong-service
     # 端口不对外开放
@@ -411,7 +412,7 @@ services:
   # 10、电台模块
   radiostation-service:
     # 镜像地址
-    image: master:5000/radiostation-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/radiostation-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: radiostation-service
     # 端口不对外开放
@@ -456,7 +457,7 @@ services:
   # 11、MV模块
   mv-service:
     # 镜像地址
-    image: master:5000/mv-service:1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/zhchub/mv-service:0.0.1-SNAPSHOT
     # 容器名称
     container_name: mv-service
     # 端口不对外开放

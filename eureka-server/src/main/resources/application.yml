@@ -24,13 +24,13 @@ eureka:
     fetchRegistry: false
     # eureka server地址
     serviceUrl:
-      defaultZone: http://master:8761/eureka/
+      defaultZone: ${eureka_serviceUrl:http://master:8761/eureka/}
   server:
     waitTimeInMsWhenSyncEmpty: 0
     # false 关闭自我保护，不管如何都要剔除心跳检测异常的服务
     enableSelfPreservation: false
   instance:
-    hostname: eureka1
+    hostname: ${INSTANCE_HOSTNAME}
 
 
 ---

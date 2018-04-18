@@ -12,6 +12,7 @@
 	<packaging>jar</packaging>
 	<name>短信服务</name>
 	<description>短信服务</description>
+
 	<dependencies>
 		<!-- 添加公共依赖 -->
 		<dependency>
@@ -20,6 +21,7 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
@@ -31,9 +33,26 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.13</version>
+
+				<!-- 打包时，build  docker -->
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+
 				<configuration>
-					<imageName>${env.DOCKER_REGISTRY_URL}/${project.artifactId}:${project.version}</imageName>
+					<imageName>${docker.url}/${project.artifactId}:${project.version}</imageName>
 					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+					<!-- 以下两行是为了docker push到DockerHub使用的。 -->
+					<serverId>ali-docker-hub</serverId>
+					<registryUrl>registry.cn-hangzhou.aliyuncs.com</registryUrl>
+					<!--install阶段也上传，否则只有deploy阶段上传-->
+					<pushImage>false</pushImage>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -41,9 +60,6 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
-					<!-- 以下两行是为了docker push到DockerHub使用的。 -->
-					<serverId>docker-aliyun-hub</serverId>
-					<registryUrl>${env.DOCKER_REGISTRY_URL}</registryUrl>
 				</configuration>
 			</plugin>
 		</plugins>

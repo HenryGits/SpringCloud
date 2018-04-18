@@ -26,7 +26,7 @@ security:
   # 这个接口不做用户名密码校验, /monitor接收git刷新通知
   ignored: /monitor
   user:
-    name: ${config_server_security_name:tony}
+    name: ${config_server_security_name:root}
     password: ${configserver_security_password:root}
 encrypt:
   # 加解密用的秘钥
